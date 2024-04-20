@@ -39,7 +39,7 @@
             <div class="row justify-content-center"> <!-- Center the row -->
                 <div class="col-md-6"> <!-- Make the column medium-sized -->
                     <section class="form-container">
-                        <h2>Add a New Entry</h2>
+                        <h2>Add a new entry</h2>
                         <form>
                             <div class="mb-3">
                                 <label for="found-lost" class="form-label">Found/Lost:</label>
