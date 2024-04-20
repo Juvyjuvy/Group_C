@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,22 +19,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+   // return view('welcome');
+//});
 
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+   return view('dashboard');
 });
 
 Route::get('/user/adverts', function () {
-    return view('adverts');
+return view('adverts');
 });
-
 Route::get('/message', function () {
-    return view('message');
+return view('message');
 });
 
 Route::get('/lostitem', function () {
@@ -45,22 +49,21 @@ Route::get('/signup', function () {
 });
 
 Route::get('/forgotpassword', function () {
-    return view('forgotpassword');
+   return view('forgotpassword');
 });
 
 Route::get('/admin/adminlogin', function () {
     return view('admin.admin');
 });
 
-Route::get('/admin/admindashboard', function () {
-    return view('admin.admindashboard');
-});
-
-Route::get('/user/logout', function () {
-    return view('logout');
-});
+//Route::get('/admin/admindashboard', function () {
+    //return view('admin.admindashboard');
+//});
 
 
+Route::resource('register', RegisterController::class);
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-
-
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');

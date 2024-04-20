@@ -23,9 +23,11 @@ body {
 
 .message-list {
     background-color: white;
-    padding: 15px;
+    padding: 20px;
     border-radius: 0 0 10px 10px;
     margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .message-item {
@@ -34,8 +36,10 @@ body {
     margin-bottom: 10px;
 }
 
+
 .message-content {
     flex-grow: 1;
+
 }
 
 .unread {
@@ -49,6 +53,7 @@ body {
 .message-time {
     color: #999;
     font-size: 0.8em;
+    margin-left: 10px;
 }
 
 .header-box {
