@@ -40,7 +40,7 @@
                 <div class="col-md-6"> <!-- Make the column medium-sized -->
                     <section class="form-container">
                         <h2>Add a new entry</h2>
-                        <form action="{{ route('/user/adverts.store')}}" method="post">
+                        <form id="advertForm" action="{{ route('/user/adverts.store')}}" method="post">
                             @csrf
 
                             <div class="mb-3">
@@ -81,18 +81,41 @@
 </div>
 @endsection
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    const menuButton = document.getElementById('menuButton');
-    const sideNav = document.getElementById('side_nav');
-    const closeButton = document.getElementById('closeButton'); // Add this line
+        const menuButton = document.getElementById('menuButton');
+        const sideNav = document.getElementById('side_nav');
+        const closeButton = document.getElementById('closeButton'); // Add this line
+        const form = document.getElementById('advertForm'); // Select the form element
 
-    menuButton.addEventListener('click', function() {
-        sideNav.classList.toggle('active');
-    });
+        menuButton.addEventListener('click', function() {
+            sideNav.classList.toggle('active');
+        });
 
-    closeButton.addEventListener('click', function() { // Add this block
-        sideNav.classList.remove('active');
+        closeButton.addEventListener('click', function() { // Add this block
+            sideNav.classList.remove('active');
+        });
+
+        // Intercept form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            swal({
+                title: "Are you sure?",
+                text: "Once submitted, you won't be able to modify the entry!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willSubmit) => {
+                if (willSubmit) {
+                    // If user confirms, submit the form
+                    form.submit();
+                    // Show success message after submission
+                    swal("Success!", "Your entry has been submitted successfully.", "success");
+                }
+            });
+        });
     });
-});
 </script>
