@@ -25,7 +25,7 @@
             </li>
             <li><a href="{{ url('/user/adverts') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Create an Advert</a></li>
             <li><a href="{{ url('/lostitem') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>&nbsp;&nbsp;
-            <li class="logout-link"><a href="{{ url('/') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
+            <li class="logout-link"><a href="{{ url('http://127.0.0.1:8000/login') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
         </ul>
     </div>
 

@@ -72,3 +72,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 //Route::post('/register', [RegisterController::class, 'store'])->name('register.store');//
 Route::post('/user/adverts', [AdvertsController::class, 'store'])->name('/user/adverts.store');
+
+
+Route::delete('lostitem/items/{Post_ID}', [AdvertsController::class, 'destroy'])->name('items.destroy');

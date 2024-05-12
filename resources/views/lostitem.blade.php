@@ -41,37 +41,40 @@
         </button>
 
         @foreach ($items as $item)
-        <div class="card" style="width: 18rem;">
-
-            <img class="card-img-top" src="{{ asset('asset/' . $item->addphoto) }}">
-            <div class="card-body">
-                <h5 class="card-title">{{$item->status}}</h5>
-                <p class="card-text">{{$item->description}}</p>
-                <button class="btn btn-primary check-item-btn" data-target="#itemModal{{$item->id}}">Check Item</button> <!-- Add the Check Item button -->
-            </div>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ asset('asset/' . $item->addphoto) }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ $item->status }}</h5>
+            <p class="card-text">{{ $item->description }}</p>
+            <button class="btn btn-primary check-item-btn" data-target="#itemModal{{ $item->Post_ID }}">Check Item</button>
+            <!-- Delete button -->
+            <form action="{{ route('items.destroy', $item->Post_ID) }}" method="POST" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <!-- End Delete button -->
         </div>
-
+    </div>
         <!-- Modal -->
-        <div class="modal fade" id="itemModal{{$item->id}}" tabindex="-1" role="dialog"
-            aria-labelledby="itemModalLabel{{$item->id}}" aria-hidden="true">
+        <div class="modal fade" id="itemModal{{$item->Post_ID}}" tabindex="-1" role="dialog"
+            aria-labelledby="itemModalLabel{{$item->Post_ID}}" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="itemModalLabel{{$item->id}}">{{$item->status}}</h5>
+                        <h5 class="modal-title" id="itemModalLabel{{$item->Post_ID}}">{{$item->status}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <p>Description: {{$item->description}}</p>
-                        <p>Contact Number: {{$item->contact_number}}</p>
+                        <p>Contact Number: {{$item->Contact_no}}</p>
                         <p>Location: {{$item->location}}</p>
                         <img src="{{ asset('asset/' . $item->addphoto) }}" alt="Item Photo" width="200">
                         <!-- Add other item information here if needed -->
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+
                 </div>
             </div>
         </div>

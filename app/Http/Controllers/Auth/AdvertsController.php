@@ -57,6 +57,17 @@ class AdvertsController extends Controller
         $user->save();
 
         // Redirect back to the page with a success message
-        return redirect()->back()->with('success', 'User added successfully.');
+        return redirect('/lostitem');
+
     }
+
+    public function destroy($Post_ID)
+    {
+        $item = adverts::findOrFail($Post_ID);
+        $item->delete();
+
+        return redirect('/lostitem');
+    }
+
+
 }
