@@ -40,7 +40,9 @@
                 <div class="col-md-6"> <!-- Make the column medium-sized -->
                     <section class="form-container">
                         <h2>Add a new entry</h2>
-                        <form>
+                        <form action="{{ route('/user/adverts.store')}}" method="post">
+                            @csrf
+
                             <div class="mb-3">
                                 <label for="found-lost" class="form-label">Found/Lost:</label>
                                 <select id="found-lost" name="found_lost" class="form-select">
@@ -50,7 +52,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="item-name" class="form-label">Item Name:</label>
-                                <input type="text" id="item-name" name="item-name" class="form-control" placeholder="Enter item name" required>
+                                <input type="text" id="item_name" name="item_name" class="form-control" placeholder="Enter item name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description:</label>

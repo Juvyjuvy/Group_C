@@ -9,6 +9,10 @@
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter Username">
     </div>
+    <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="username" name="name" placeholder="Enter Name">
+    </div>
    <div class="input-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="Enter Email">

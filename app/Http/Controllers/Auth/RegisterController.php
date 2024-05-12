@@ -31,6 +31,7 @@ class RegisterController extends Controller
     {
         // Validate the request data
         $request->validate([
+
             'username' => 'required',
             'email' => 'required|email',
             'password' => 'required',
@@ -39,7 +40,8 @@ class RegisterController extends Controller
 
         // Create a new user instance
         $user = new usersX(); // Adjust model name here
-        $user->username = $request->username;
+        // Set the user attributes
+     $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password); // Hash the password for security
 

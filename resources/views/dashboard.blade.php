@@ -41,8 +41,12 @@
             <div class="profile">
                 <img src="{{ asset('asset/tristan.png') }}" alt="Tristan Image" width="60" height="60">
                 <div>
-                    <p>Hello, Tristan L. Parajes</p>
+                    @auth <!-- Check if user is authenticated -->
+                    <p>Hello,  {{ Auth::user()->Username }}!</p>
                     <a href="{{ url('profile') }}" class="btn btn-light">Profile</a>
+                    @else <!-- If not authenticated, display a message or redirect to login page -->
+                    <p>Hello, </p>
+                    @endauth
                 </div>
             </div>
             <div class="button" id="advertButton">
