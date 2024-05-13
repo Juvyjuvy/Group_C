@@ -10,23 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id('message_id');
-            $table->string('content');
-            $table->string('date_sent');
-            $table->string('sender');
-            $table->string('reciever');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('notifications', function (Blueprint $table) {
+        $table->id('notification_id');
+        $table->string('content');
+        $table->dateTime('date_sent');
+        $table->string('sender');
+        $table->string('receiver');
+        $table->rememberToken();
+        $table->timestamps();
+    });
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('messages');
-    }
-};
+/**
+ * Reverse the migrations.
+ */
+public function down(): void
+{
+    Schema::dropIfExists('notifications');
+}
