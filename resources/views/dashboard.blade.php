@@ -25,7 +25,7 @@
             </li>
             <li><a href="{{ url('/user/adverts') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Create an Advert</a></li>
             <li><a href="{{ url('/lostitem') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>&nbsp;&nbsp;
-            <li class="logout-link"><a href="{{ url('http://127.0.0.1:8000/login') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
+            <li class="logout-link"><a href="{{ route('logout') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
         </ul>
     </div>
 
@@ -39,13 +39,18 @@
 
         <div class="col-md-4x">
             <div class="profile">
-                <img src="{{ asset('asset/tristan.png') }}" alt="Tristan Image" width="60" height="60">
-                <div>
+                @if(Auth::check() && Auth::user()->profile_image)
+                <img src="{{ asset('asset/' . Auth::user()->profile_image) }}" alt="Profile Image"width="60" height="60">
+            @else
+                <!-- Add a default image or placeholder if the user doesn't have a profile image -->
+                <img src="{{ asset('path_to_default_image/default.png') }}" alt="Default Image">
+            @endif
+                            <form  action="{{ route('profile.update') }}" method="post">
+                                @csrf
                     @auth <!-- Check if user is authenticated -->
-                    <p>Hello,  {{ Auth::user()->Username }}!</p>
+                    <p>Hello,  {{ Auth::user()->name}}!</p>
                     <a href="{{ url('profile') }}" class="btn btn-light">Profile</a>
-                    @else <!-- If not authenticated, display a message or redirect to login page -->
-                    <p>Hello, </p>
+
                     @endauth
                 </div>
             </div>

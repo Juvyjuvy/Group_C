@@ -11,7 +11,7 @@
     </div>
     <div class="input-group">
         <label for="name">Name</label>
-        <input type="text" id="username" name="name" placeholder="Enter Name">
+        <input type="text" id="name" name="name" placeholder="Enter Name">
     </div>
    <div class="input-group">
         <label for="email">Email</label>

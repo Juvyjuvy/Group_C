@@ -29,7 +29,7 @@
             </li>
             <li><a href="http://127.0.0.1:8000/user/adverts" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Create an Advert</a></li>
             <li><a href="http://127.0.0.1:8000/lostitem/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>&nbsp;&nbsp;
-            <li class="logout-link"><a href="http://127.0.0.1:8000/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
+            <li class="logout-link"><a href="{{ route('logout') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
         </ul>
     </ul>
     </div>
@@ -43,19 +43,30 @@
 
         <div class="container my-5">
             <div class="profile-card text-center bg-dark-blue text-white">
-                <img src="{{ asset('asset/profile.png') }}" alt="Profile Image">
-                <div class="profile-details">
-                    <h2>Profile</h2>
-                    <p>Name: Tristan L. Parijas</p>
-                    <p>Course: BSIT-2</p>
-                    <p>Address: Prk 2, Tambacan Iligan City</p>
-                    <p>Religion: Roman Catholic</p>
-                    <p>Birthday: January 2, 2004</p>
-                    <p>Contact Number: 09518429817</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfileModal">
-                        Edit Profile
-                    </button>
-                </div>
+
+
+                @if(Auth::check() && Auth::user()->profile_image)
+    <img src="{{ asset('asset/' . Auth::user()->profile_image) }}" alt="Profile Image">
+@else
+    <!-- Add a default image or placeholder if the user doesn't have a profile image -->
+    <img src="{{ asset('path_to_default_image/default.png') }}" alt="Default Image">
+@endif
+                <form  action="{{ route('profile.update') }}" method="post">
+                    @csrf
+                    <div class="profile-details">
+                        <h2>Profile</h2>
+                        <p>Name: <input type="text" name="name" value="{{ Auth::user()->name }}"></p>
+                        <p>Course: <input type="text" name="course" value="{{ Auth::user()->course }}"></p>
+                        <p>Address: <input type="text" name="address" value="{{ Auth::user()->address }}"></p>
+                        <p>Religion: <input type="text" name="religion" value="{{Auth::user()->religion }}"></p>
+                        <p>Birthday: <input type="text" name="birthday" value="{{Auth::user()->birthday }}"></p>
+                        <p>Contact Number: <input type="text" name="contact_number" value="{{ Auth::user()->contact_number }}"></p>
+                        <p>Profile Image: <input type="file" name="profile_image"></p>
+                        <button type="submit">Save Changes</button>
+                    </div>
+                </form>
+
+
             </div>
         </div>
 
@@ -95,6 +106,7 @@
                             <input type="text" class="form-control" id="inputContactNumber" value="09518429817">
                         </div>
                     </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

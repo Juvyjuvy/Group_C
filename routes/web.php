@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AdvertsController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -23,35 +24,6 @@ use App\Http\Controllers\Auth\AdvertsController;
 //Route::get('/', function () {
    // return view('welcome');
 //});
-
-
-Route::get('/dashboard', function () {
-   return view('dashboard');
-});
-
-Route::get('/user/adverts', function () {
-return view('adverts');
-});
-Route::get('/message', function () {
-return view('message');
-});
-
-Route::get('/lostitem', function () {
-    return view('lostitem');
-});
-
-
-Route::get('/lostitem', [AdvertsController::class, 'display']);
-
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-
-Route::get('/signup', function () {
-    return view('signup');
-});
-
 Route::get('/forgotpassword', function () {
    return view('forgotpassword');
 });
@@ -75,3 +47,31 @@ Route::post('/user/adverts', [AdvertsController::class, 'store'])->name('/user/a
 
 
 Route::delete('lostitem/items/{Post_ID}', [AdvertsController::class, 'destroy'])->name('items.destroy');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::middleware(['auth','verified'])->group(function (){
+
+     Route::get ('/profile', function () {
+     return view('profile');
+    });
+
+
+     Route::get('/dashboard', function () {
+        return view('dashboard');
+     });
+
+     Route::get('/user/adverts', function () {
+     return view('adverts');
+     });
+     Route::get('/message', function () {
+     return view('message');
+     });
+     Route::get('/lostitem', function () {
+        return view('lostitem');
+    });
+
+
+    Route::get('/lostitem', [AdvertsController::class, 'display']);
+
+});
