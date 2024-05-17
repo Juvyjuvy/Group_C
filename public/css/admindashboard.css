@@ -1,45 +1,183 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
+    margin-top: 0px;
     padding: 0;
+    background-color: #C09C9D;
+    color: #383838;
+    overflow: hidden;
 }
-.navbar {
-    background-color: #76282A;
-}
-.navbar-brand,
-.navbar-nav .nav-link {
-    color: #fff;
-    font-weight: bold;
-}
-.navbar-brand:hover,
-.navbar-nav .nav-link:hover {
-    color: #f8f9fa;
-}
-.container {
-    margin-top: 50px;
-    padding: 20px;
-}
-.content {
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-h2 {
-    color: #76282A;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-p {
-    color: #333;
-    font-size: 16px;
-    line-height: 1.6;
-}
-.nav-item {
+
+.col-md-4x {
+    margin-top: 30px; /* Adjust the top margin as needed */
+    margin-left: 10px;
     margin-right: 10px;
 }
-.hidden {
-    display: none;
+
+.dashboard {
+    padding: 30px;
+    margin-top: 0%;
 }
+
+.header-box {
+    text-align: center;
+    color: #fff;
+}
+
+.header-box h1 {
+    margin: 0;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+/* Profile Styles */
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #76282A;
+    border-radius: 10px;
+}
+
+.profile img {
+    border-radius: 50%;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.profile p {
+    width: 200px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+/* Button Styles */
+.button {
+    background-color: #E6DDD0;
+    border: none;
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bg-maroon {
+    background-color: rgb(109, 33, 33) !important;
+}
+
+.button img {
+    margin-right: 10px;
+}
+
+.button p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.button .text {
+    padding-right: 20px;
+}
+
+/* Menu Icon Styles */
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .header, .profile, .button {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+body {
+    background: #eee;
+}
+
+#side_nav {
+    background: #5c1c1c;
+    min-width: 250px;
+    max-width: 250px;
+    padding-bottom: 20px;
+    position: sticky;
+    transition: margin-left 0.5s; /* Added transition for smooth sliding */
+}
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+hr.h-color {
+    background: #eee;
+}
+
+.sidebar li.active,
+.sidebar li.active:hover {
+    background: #7c4646;
+    border-radius: 8px;
+}
+
+.sidebar li a {
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    #side_nav {
+        margin-left: -250px;
+        position: absolute;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+    #side_nav.active {
+        margin-left: 0;
+    }
+}
+
+
+.close-btn {
+
+    position: absolute;
+    top: 20px; /* Adjust top position */
+    right: 20px; /* Adjust right position */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 999; /* Ensure it's below the menu button */
+}
+.menu-btn {
+    position:static;
+    top: 30px; /* Adjust top position */
+    margin-top: 10px;
+    margin-left: 20px; /* Adjust left position */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.logout-link {
+    position: absolute;
+    top: 20px; /* Adjust top position */
+
+}
+
+
+    .logout-link {
+        top: auto;
+        bottom: 20px; /* Adjust bottom position for mobile */
+       margin-right: 20px; /* Adjust right position */
+    }
+

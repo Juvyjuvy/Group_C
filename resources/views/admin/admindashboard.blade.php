@@ -1,7 +1,6 @@
 @extends('layouts.admindashboard')
 
 @section('content')
-
 <div class="main-container d-flex">
     <!-- Sidebar -->
     <div class="sidebar" id="side_nav">
@@ -10,32 +9,24 @@
                 <img src="{{ asset('asset/Ellipse 63.png') }}" alt="Lost & Found Logo" width="80" height="80" class="me-2">
                 <p>Lost & Found</p>
             </h1>
-
-            <!-- Menu Button -->
-            <button class="btn d-md-none d-block close-btn px-1 py-0 text-white" id="menuButton">
-                <img src="{{ asset('asset/menu.png') }}" alt="Menu" width="24" height="24">
+            <button class="btn close-btn px-1 py-0 text-white" id="closeButton" style="align-self: center;">
+                <img src="{{ asset('asset/close.png') }}" alt="Close" width="24" height="24">
             </button>
         </div>
 
+        <!-- Menu Button -->
         <ul class="list-unstyled px-2">
-            <li class="active"><a href="http://127.0.0.1:8000/admin/admindashboard" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
-            <li><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-list"></i> Profile</a></li>
-            <li>
-                <a href="http://127.0.0.1:8000/message/? " class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
-                    <span><i class="fal fa-comment"></i> Messages</span>
-                    <span class="bg-dark rounded-pill text-white py-0 px-2">02</span>
+            <li><a href="http://127.0.0.1:8000/admin/admindashboard" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
+
+              <li>  <a href="/" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                    <span><i class="fal fa-comment"></i> Notification</span>
                 </a>
             </li>
-
-
-            <ul class="list-unstyled px-2">
-                <li><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bars"></i> Logout</a></li>
-
-                <li><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Notifications</a></li>
-            </ul>
+            <li class="active"><a href="http://127.0.0.1:8000/admin/advertss" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i> Create an Advert</a></li>
+            <li><a href="http://127.0.0.1:8000/admin/lost" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>
+            <li class="logout-link"><a href="{{ route('logout') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
         </ul>
     </div>
-
     <!-- Content -->
     <div class="content">
         <nav class="navbar navbar-expand-md navbar-light bg-maroon">
@@ -50,7 +41,7 @@
                 <img src="{{ asset('asset/admin.png') }}" alt="admin" width="60" height="60">
                 <div>
                     <p>Hello, Admin</p>
-                    <a href="{{ asset('profile') }}" class="btn btn-light">Profile</a>
+
                 </div>
             </div>
             <div class="button" id="advertButton">
@@ -84,5 +75,45 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="createAdvertModal" tabindex="-1" aria-labelledby="createAdvertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-maroon text-white">
+                <h5 class="modal-title" id="createAdvertModalLabel">Create New Advert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="create-advert-form">
+                    <div class="form-group mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-control" id="category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="lost">Lost</option>
+                            <option value="found">Found</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
+                    <button type="submit" class="btn btn-maroon">Create Advert</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection

@@ -24,6 +24,15 @@ use App\Http\Controllers\ProfileController;
 //Route::get('/', function () {
    // return view('welcome');
 //});
+
+Route::get ('/admin/advertss', function () {
+    return view('admin.adminadverts');
+ });
+
+ Route::get('/admin/lost', function () {
+    return view('admin.lostitemadmin');
+ });
+
 Route::get('/forgotpassword', function () {
    return view('forgotpassword');
 });
