@@ -15,6 +15,12 @@ class AdvertsController extends Controller
         return view('lostitem', compact('items'));
 
     }
+
+    public function admindisplay () {
+        $items = Adverts::all();
+        return view('admin/lostitemadmin', compact('items'));
+
+    }
     public function index()
     {
         return view('register');
@@ -45,6 +51,7 @@ class AdvertsController extends Controller
         ]);
 
         // Create a new user instance
+
         $user = new adverts(); // Adjust model name here
         $user->status = $request->found_lost;
         $user->identify_name = $request->item_name;
@@ -66,8 +73,14 @@ class AdvertsController extends Controller
         $item = adverts::findOrFail($Post_ID);
         $item->delete();
 
-        return redirect('/lostitem');
+        return redirect('admin/lostitemadmin');
     }
 
+    public function destroyForUser($Post_ID) {
+        $item = Adverts::findOrFail($Post_ID);
+        $item->delete();
+
+        return redirect('/lostitem')->with('success', 'Item deleted successfully.');
+    }
 
 }

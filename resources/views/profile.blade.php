@@ -18,8 +18,8 @@
             <li><a href="http://127.0.0.1:8000/dashboard/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
             <li class="active"><a href="http://127.0.0.1:8000/profile/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-list"></i> Profile</a></li>
             <li>
-                <a href="http://127.0.0.1:8000/message/? " class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between text-white">
-                    <span><i class="fal fa-comment"></i> Messages</span>
+                <a href="http://127.0.0.1:8000/notifications " class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between text-white">
+                    <span><i class="fal fa-comment"></i>Notification</span>
                 </a>
             </li>
             <li><a href="http://127.0.0.1:8000/user/adverts" class="text-decoration-none px-3 py-2 d-block text-white"><i class="fal fa-envelope-open-text"></i>Create an Advert</a></li>

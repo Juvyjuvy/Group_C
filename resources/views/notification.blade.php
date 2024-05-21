@@ -1,4 +1,4 @@
-@extends('layouts.message')
+@extends('layouts.notifications')
 
 @section('content')
 <div class="main-container d-flex">
@@ -22,8 +22,8 @@
                 </a></li>
             <li><a href="http://127.0.0.1:8000/profile/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-list"></i> Profile</a></li>
             <li class="active">
-                <a href="http://127.0.0.1:8000/message/? " class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
-                    <span><i class="fal fa-comment"></i> Messages</span>
+                <a href="http://127.0.0.1:8000/notifications " class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                    <span><i class="fal fa-comment"></i>Notification</span>
                     <img src="{{ asset('asset/inbox.gif') }}"  alt="Message Icon" width="25" height="25">
                 </a>
             </li>
@@ -35,33 +35,24 @@
     </div>
 
 
-        <div class="content">
-            <button class="btn d-md-none d-block close-btn px-1 py-0 text-white menu-btn" id="menuButton">
+     <div class="content">
+         <button class="btn d-md-none d-block close-btn px-1 py-0 text-white menu-btn" id="menuButton">
                 <img src="{{ asset('asset/menu.png') }}" alt="Menu" width="24" height="24">
             </button>
 
-        <div class="message-list">
-          <!-- Example message -->
-          <div class="message-item unread">
-            <img src="{{ asset('asset/pablo.png') }}" alt="Profile Picture" class="profile-pic">
-            <div class="message-content">
-              <strong>Pablo</strong>
-              <div>Goodafternoon what time you available sir</div>
+            <div class="message-list">
+
+                    <div class="message-item unread">
+                        <img src="{{ asset('asset/pablo.png') }}" alt="Profile Picture" class="profile-pic">
+                        <div class="message-content">
+                            <strong></strong>
+                            <div></div>
+                        </div>
+                        <div> </div>
+                    </div>
+
             </div>
-            <div class="message-time ">12:04 PM</div>
-          </div>
-          <div class="message-item unread">
-            <img src="{{ asset('asset/job.png') }}" alt="Profile Picture" class="profile-pic">
-            <div class="message-content">
-              <strong>Job</strong>
-              <div>hello... ive got a concern about my item</div>
-            </div>
-            <div class="message-time">8:04 AM</div>
-          </div>
-          <!-- More messages... -->
-        </div>
-    </div>
-</div>
+
 @endsection
 
 

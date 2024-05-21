@@ -22,7 +22,7 @@
                     <span><i class="fal fa-comment"></i> Notification</span>
                 </a>
             </li>
-            <li class="active"><a href="http://127.0.0.1:8000/admin/advertss" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i> Create an Advert</a></li>
+
             <li><a href="http://127.0.0.1:8000/admin/lost" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>
             <li class="logout-link"><a href="{{ route('logout') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
         </ul>
@@ -60,7 +60,7 @@
                 <div>
                     <p><strong>LOST & FOUND ITEM</strong></p>
                     <p style="padding-right: 20px;">
-                        <a href="{{ asset('lostitem') }}" style="color: maroon;">Go through the lost and found items</a>
+                        <a href="{{ asset('admin/lostitemadmin') }}" style="color: maroon;">Go through the lost and found items</a>
                     </p>
                 </div>
             </div>

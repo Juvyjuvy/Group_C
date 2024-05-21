@@ -52,7 +52,7 @@ class RegisterController extends Controller
         $user->save();
 
         // Redirect back to the page with a success message
-        return redirect()->back()->with('success', 'User added successfully.');
+        return redirect('/login');
     }
 
     // Other controller methods...

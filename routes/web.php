@@ -25,13 +25,14 @@ use App\Http\Controllers\ProfileController;
    // return view('welcome');
 //});
 
-Route::get ('/admin/advertss', function () {
-    return view('admin.adminadverts');
- });
 
- Route::get('/admin/lost', function () {
-    return view('admin.lostitemadmin');
+
+ Route::get('/admin/lostitemadmin', function () {
+    return view('admin/lostitemadmin');
  });
+ Route::get('/admin/lostitemadmin', [AdvertsController::class, 'admindisplay']);
+
+
 
 Route::get('/forgotpassword', function () {
    return view('forgotpassword');
@@ -46,6 +47,8 @@ Route::get('/admin/admindashboard', function () {
 });
 
 
+
+
 Route::resource('register', RegisterController::class);
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -53,11 +56,16 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 //Route::post('/register', [RegisterController::class, 'store'])->name('register.store');//
 Route::post('/user/adverts', [AdvertsController::class, 'store'])->name('/user/adverts.store');
-
-
-Route::delete('lostitem/items/{Post_ID}', [AdvertsController::class, 'destroy'])->name('items.destroy');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/lost', [AdvertsController::class, 'displayForAdmin'])->name('adminlost');
+    Route::delete('/admin/lost/{Post_ID}', [AdvertsController::class, 'destroy'])->name('items.destroy');
+});
+Route::get('admin/lostitemadmin/delete/{id}', [AdvertsController::class, 'destroy']);
+//Route::delete('lostitem/items/{Post_ID}', [AdvertsController::class, 'destroy'])->name('items.destroy');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/items/{id}', 'LostFoundItemsController@destroy')->name('items.delete');
+
 
 Route::middleware(['auth','verified'])->group(function (){
 
@@ -73,14 +81,19 @@ Route::middleware(['auth','verified'])->group(function (){
      Route::get('/user/adverts', function () {
      return view('adverts');
      });
-     Route::get('/message', function () {
-     return view('message');
+     Route::get('/notifications', function () {
+     return view('notification');
      });
      Route::get('/lostitem', function () {
         return view('lostitem');
     });
 
 
-    Route::get('/lostitem', [AdvertsController::class, 'display']);
 
+    Route::get('/lostitem', [AdvertsController::class, 'display']);
+    Route::get('/lostitem/delete/{id}', [AdvertsController::class, 'destroyForUser']);
+
+
+
+    Route::get('admin/lostitemadmin/delete/{id}', [AdvertsController::class, 'destroy']);
 });

@@ -18,8 +18,8 @@
             <li><a href="{{ asset('dashboard') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
             <li><a href="http://127.0.0.1:8000/profile" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-list"></i> Profile</a></li>
             <li>
-                <a href="http://127.0.0.1:8000/message/" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
-                    <span><i class="fal fa-comment"></i> Messages</span>
+                <a href="http://127.0.0.1:8000/notifications" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+                    <span><i class="fal fa-comment"></i>Notification</span>
                 </a>
             </li>
             <li><a href="http://127.0.0.1:8000/user/adverts" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i> Create an Advert</a></li>
@@ -42,11 +42,7 @@
                         <p class="card-text">{{ $item->description }}</p>
                         <button class="btn btn-primary check-item-btn" data-target="#itemModal{{ $item->Post_ID }}">Check Item</button>
                         <!-- Delete button -->
-                        <form action="{{ route('items.destroy', $item->Post_ID) }}" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <button class="btn btn-danger delete-item" data-id="{{ $item->Post_ID }}">DELETE</button>
                         <!-- End Delete button -->
                     </div>
                 </div>
@@ -79,6 +75,10 @@
 </div>
 
 @endsection
+
+<!-- Include jQuery and SweetAlert -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -121,6 +121,30 @@
                         document.body.classList.remove('modal-open');
                     });
                 }
+            });
+        });
+
+        // Add event listener for Delete Item buttons with SweetAlert
+        const deleteItemButtons = document.querySelectorAll('.delete-item');
+        deleteItemButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const itemId = button.getAttribute('data-id');
+                const deleteUrl = "{{ url('lostitem/delete') }}/" + itemId;
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect to delete URL
+                        window.location.href = deleteUrl;
+                    }
+                });
             });
         });
     });
