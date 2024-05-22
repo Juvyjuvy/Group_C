@@ -13,7 +13,7 @@
             @foreach ($items as $item)
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img class="card-img-top" src="{{ asset('asset/' . $item->addphoto) }}" alt="Item Photo">
+                        <img class="card-img-top" src="{{ asset('asset/' . $item->addphoto) }}" alt="Item Photo" width="300" height="300">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->status }}</h5>
                             <p class="card-text">{{ $item->description }}</p>

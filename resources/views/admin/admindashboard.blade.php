@@ -9,9 +9,7 @@
                 <img src="{{ asset('asset/Ellipse 63.png') }}" alt="Lost & Found Logo" width="80" height="80" class="me-2">
                 <p>Lost & Found</p>
             </h1>
-            <button class="btn close-btn px-1 py-0 text-white" id="closeButton" style="align-self: center;">
-                <img src="{{ asset('asset/close.png') }}" alt="Close" width="24" height="24">
-            </button>
+
         </div>
 
         <!-- Menu Button -->
@@ -23,8 +21,8 @@
                 </a>
             </li>
 
-            <li><a href="http://127.0.0.1:8000/admin/lost" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>
-            <li class="logout-link"><a href="{{ route('logout') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
+            <li><a href="{{ asset('admin/lostitemadmin') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>
+            <li class="logout-link"><a href="{{ route('admin-logout')}}"  class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
         </ul>
     </div>
     <!-- Content -->
@@ -44,18 +42,7 @@
 
                 </div>
             </div>
-            <div class="button" id="advertButton">
-                <img src="{{ asset('asset/megaphone.png') }}"  width="40" height="40">
-                <div>
-                    <p><strong>Create an advert</strong></p>
-                    <div class="text">
-                        <p style="padding-right: 20px;">
-                            <a href="{{ asset('user/adverts') }}" style="color: maroon;">Report you find or lost an item</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="button" id="lostFoundButton">
+         <div class="button" id="lostFoundButton">
                 <img src="{{ asset('asset/suitcase.gif') }}" width="40" height="40">
                 <div>
                     <p><strong>LOST & FOUND ITEM</strong></p>

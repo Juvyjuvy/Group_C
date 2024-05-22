@@ -3,25 +3,33 @@
 @section('content')
 
 <header>
-    <h1>Administrator</h1>
-</header>
+
+
 <div class="container">
-    <form action="#" method="post">
-        <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input type="text" id="email" name="email" placeholder="Enter email" required>
+    <div class="col-left">
+        <div class="login-text">
+            <h2>Welcome Back</h2>
         </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" required>
-        </div>
-        <div class="checkbox-container">
-            <input type="checkbox" id="policy" name="policy" required>
-            <label class="checkbox-label" for="policy">I accept the policy and terms</label>
-        </div>
-        <button type="submit">Log In</button>
-    </form>
-    <p class="forgot-password">Forgot Password?</p>
+    </div>
+    <div class="col-right">
+        <form method="POST" action="{{ route('admin.adminlogin') }}">
+            @csrf
+            <div class="login-form">
+                <h2>Login</h2>
+                <p>
+                    <label for="email">Username or email address<span>*</span></label>
+                    <input id="email" name="email" type="text" placeholder="Username or Email" value="{{ old('email') }}" required>
+                </p>
+                <p>
+                    <label for="password">Password<span>*</span></label>
+                    <input id="password" name="password" type="password" placeholder="Password" required>
+                </p>
+                <p>
+                    <input type="submit" value="Sign In" />
+                </p>
+            </div>
+        </form>
+    </div>
 </div>
 
 @endsection
