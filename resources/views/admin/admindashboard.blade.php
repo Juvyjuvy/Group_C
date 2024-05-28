@@ -18,6 +18,7 @@
 
               <li>  <a href="/" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                     <span><i class="fal fa-comment"></i> Notification</span>
+                    <img src="{{ asset('asset/alarm.gif') }}"  alt="Message Icon" width="25" height="25">
                 </a>
             </li>
 
@@ -51,14 +52,14 @@
                     </p>
                 </div>
             </div>
-            <div class="button" id="lostFoundButton">
+            <!--div class="button" id="lostFoundButton">
                 <img src="{{ asset('asset/user.gif') }}" width="40" height="40">
                 <div>
                     <p><strong>Users</strong></p>
                     <p style="padding-right: 20px;">
-                        <a href="{{ asset('lostitem') }}" style="color: maroon;">Active users</a>
+                        <a href="{{ asset('#') }}" style="color: maroon;">Active users</a>
                     </p>
-                </div>
+                </div-->
         </div>
     </div>
 </div>

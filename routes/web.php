@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessagesController;
 
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\LoginController;
@@ -24,41 +25,37 @@ use App\Http\Controllers\ProfileController;
 
 //Admin
 
-Route::get('/admin/lostitemadmin', function () {
-    return view('admin/lostitemadmin');
- });
-Route::get('/admin/lostitemadmin', [AdvertsController::class, 'admindisplay']);
 
+    Route::get('/admin/lostitemadmin', function () {
+        return view('admin/lostitemadmin');
+    });
+
+    Route::get('/admin/adminlogin', function () {
+        return view('admin.admin');
+    });
+    Route::get('/admin/admindashboard', function () {
+        return view('admin.admindashboard');
+    });
+
+// Routes outside the middleware group
 Route::get('/forgotpassword', function () {
-   return view('forgotpassword');
-});
-
-Route::get('/admin/adminlogin', function () {
-    return view('admin.admin');
-});
-
-Route::get('/admin/admindashboard', function () {
-    return view('admin.admindashboard');
+    return view('forgotpassword');
 });
 
 
 
-
+Route::get('/admin/lostitemadmin', [AdvertsController::class, 'admindisplay']);
 Route::get('/admin/admin', [AdminController::class, 'show'])->name('admin.admin');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.adminlogin');
 Route::get('/admin-logout', [AdminController::class, 'adminlogout'])->name('admin-logout');
 
 
 Route::post('/user/adverts', [AdvertsController::class, 'store'])->name('/user/adverts.store');
-Route::middleware(['auth', 'admin'])->group(function () {
+
 Route::get('/admin/lost', [AdvertsController::class, 'displayForAdmin'])->name('adminlost');
 Route::delete('/admin/lost/{Post_ID}', [AdvertsController::class, 'destroy'])->name('items.destroy');
-});
+
 Route::get('admin/lostitemadmin/delete/{id}', [AdvertsController::class, 'destroy']);
-
-
-
-
 
 
 
@@ -82,14 +79,19 @@ Route::middleware(['auth','verified'])->group(function (){
      Route::get('/user/adverts', function () {
      return view('adverts');
      });
-     Route::get('/notifications', function () {
-     return view('notification');
+     Route::get('/messages', function () {
+     return view('message');
      });
      Route::get('/lostitem', function () {
         return view('lostitem');
     });
      Route::get('/lostitem', [AdvertsController::class, 'display']);
      Route::get('/lostitem/delete/{id}', [AdvertsController::class, 'destroyForUser']);
+
+
+Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+Route::get('/messages/create', [MessagesController::class, 'create'])->name('messages.create');
+Route::post('/messages', [MessagesController::class, 'store'])->name('messages.store');
 
 
 

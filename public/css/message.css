@@ -191,3 +191,8 @@ body{
        margin-right: 20px; /* Adjust right position */
     }
 }
+    .scrollable {
+        max-height: 400px; /* Adjust the height as needed */
+        overflow-y: auto;
+    }
+

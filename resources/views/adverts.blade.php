@@ -19,8 +19,9 @@
             <li><a href="http://127.0.0.1:8000/dashboard/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
             <li><a href="http://127.0.0.1:8000/profile/" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-list"></i> Profile</a></li>
             <li>
-                <a href="http://127.0.0.1:8000/notifications " class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
-                    <span><i class="fal fa-comment"></i>Notification</span>
+                <a href="http://127.0.0.1:8000/messages" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between text-white">
+                    <span><i class="fal fa-comment"></i>Messages</span>
+                    <img src="{{ asset('asset/Message.gif') }}"  alt="Message Icon" width="25" height="25">
                 </a>
             </li>
             <li class="active"><a href="http://127.0.0.1:8000/user/adverts#" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i> Create an Advert</a></li>
@@ -46,8 +47,8 @@
                             <div class="mb-3">
                                 <label for="found-lost" class="form-label">Found/Lost:</label>
                                 <select id="found-lost" name="found_lost" class="form-select">
-                                    <option value="found">Found</option>
-                                    <option value="lost">Lost</option>
+                                    <option value="Found">Found</option>
+                                    <option value="Lost">Lost</option>
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -55,7 +56,7 @@
                                 <input type="text" id="item_name" name="item_name" class="form-control" placeholder="Enter item name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label">Description:</label>
+                                <label for="description" class="form-label">Description/Email:</label>
                                 <textarea id="description" name="description" class="form-control" placeholder="Enter item description" required></textarea>
                             </div>
                             <div class="mb-3">
