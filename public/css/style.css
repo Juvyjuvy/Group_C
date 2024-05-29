@@ -1,6 +1,6 @@
 body {
     background-color: #76282A;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-top: 40px;
     overflow: hidden;
 }
@@ -36,11 +36,12 @@ body {
 
 .input-group input {
     display: block;
-    padding: 8.2px;
+    padding: 8px;
     border-radius: 7px;
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
+    border: 2px solid #ccc;
 }
 
 .input-group {
@@ -50,7 +51,6 @@ body {
     justify-content: center;
     margin-bottom: 30px;
     width: 100%;
-
 }
 
 .racetrack-button {
@@ -96,8 +96,5 @@ header {
 
 h1 {
     color: whitesmoke;
+    font-family: 'Montserrat', sans-serif; /* Updated font for the header */
 }
-
-
-
-

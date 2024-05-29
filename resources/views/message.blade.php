@@ -29,18 +29,18 @@
         </ul>
     </div>
 
-    <div class="content">
+    <div class="content p-4">
         <button class="btn d-md-none d-block close-btn px-1 py-0 text-white menu-btn" id="menuButton">
             <img src="{{ asset('asset/menu.png') }}" alt="Menu" width="24" height="24">
         </button>
 
         <div class="card mb-4 fade-in">
-            <div class="card-header">
-                <h1>Inbox</h1>
+            <div class="card-header" style="background-color: #5c1c1c; color: #fff;">
+                <h2 class="m-0">Inbox</h2>
             </div>
             <div class="card-body scrollable">
                 @if ($messages->isEmpty())
-                    <p>No messages.</p>
+                    <p class="text-muted">No messages.</p>
                 @else
                     <ul class="list-group">
                         @foreach ($messages as $message)
@@ -50,9 +50,13 @@
                         @endphp
                         @if ($message->receiver_email == $user->email)
                             <li class="list-group-item fade-in">
-                                <strong>From:</strong> {{ $sender->email }}<br>
-                                <strong>Message:</strong> {{ $message->content }}<br>
-                                <small class="text-muted">Received at: {{ $message->created_at }}</small>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <strong>From:</strong> {{ $sender->email }}<br>
+                                        <strong>Message:</strong> {{ $message->content }}
+                                    </div>
+                                    <small class="text-muted">Received at: {{ $message->created_at }}</small>
+                                </div>
                             </li>
                         @endif
                         @endforeach
@@ -62,28 +66,67 @@
         </div>
 
         <div class="card fade-in">
-            <div class="card-header">
-                <h1>Send a Message</h1>
+            <div class="card-header" style="background-color: #5c1c1c; color: #fff;">
+                <h2 class="m-0">Send a Message</h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('messages.store') }}" method="POST">
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="userxName">To:</label>
-                        <input type="text" id="userxName" name="userxName" class="form-control">
+                        <input type="text" id="userxName" name="userxName" class="form-control" placeholder="Enter recipient's username">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="content">Message:</label>
-                        <textarea name="content" id="content" class="form-control" rows="4"></textarea>
+                        <textarea name="content" id="content" class="form-control" rows="4" placeholder="Type your message here"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #5c1c1c; border-color: #5c1c1c;">Send</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    .scrollable {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .card-header {
+        border-bottom: 1px solid #5c1c1c;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 5px rgba(92, 28, 28, 0.5);
+        border-color: #5c1c1c;
+    }
+</style>
 @endsection
 
 <script>
