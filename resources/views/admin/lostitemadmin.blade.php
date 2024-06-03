@@ -19,10 +19,10 @@
         <ul class="list-unstyled px-2">
             <li><a href="http://127.0.0.1:8000/admin/admindashboard" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
 
-              <li>  <a href="#" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+              <!--li>  <a href="#" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                     <span><i class="fal fa-comment"></i> Notification</span>
                 </a>
-            </li>
+            </li-->
 
             <li><a href="{{ asset('admin/lostitemadmin') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>
             <li class="logout-link"><a href="{{ route('admin-logout')}}"  class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
@@ -57,7 +57,7 @@
                                 <button class="btn btn-primary view-details"
                                         data-toggle="modal"
                                         data-target="#itemModal"
-                                        data-name="{{ $item->identify_name }}"
+                                        data-Item-Name="{{ $item->identify_name }}"
                                         data-description="{{ $item->description }}"
                                         data-contact="{{ $item->Contact_no }}"
                                         data-location="{{ $item->location }}"
@@ -88,6 +88,8 @@
                 </button>
             </div>
             <div class="modal-body">
+                <p id="itemItemName"></p>
+
                 <p id="itemDescription"></p>
                 <p id="itemContact"></p>
                 <p id="itemLocation"></p>
@@ -152,7 +154,7 @@
 
         // View Details functionality
         $(document).on('click', '.view-details', function () {
-            var itemName = $(this).data('name');
+            var itemName = $(this).data('item-name');
             var itemDescription = $(this).data('description');
             var itemContact = $(this).data('contact');
             var itemLocation = $(this).data('location');
@@ -160,6 +162,7 @@
             var itemStatus = $(this).data('status');
 
             $('#itemModalLabel').text(itemStatus);
+            $('#itemItemName').text('Item Name: ' + itemName);
             $('#itemDescription').text('Description: ' + itemDescription);
             $('#itemContact').text('Contact Number: ' + itemContact);
             $('#itemLocation').text('Location: ' + itemLocation);

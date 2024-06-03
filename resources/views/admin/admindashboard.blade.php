@@ -16,11 +16,11 @@
         <ul class="list-unstyled px-2">
             <li><a href="http://127.0.0.1:8000/admin/admindashboard" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-home"></i> Dashboard</a></li>
 
-              <li>  <a href="/" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
+              <!--li>  <a href="/" class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                     <span><i class="fal fa-comment"></i> Notification</span>
                     <img src="{{ asset('asset/alarm.gif') }}"  alt="Message Icon" width="25" height="25">
                 </a>
-            </li>
+            </li-->
 
             <li><a href="{{ asset('admin/lostitemadmin') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-envelope-open-text"></i>Lost and Found Items</a></li>
             <li class="logout-link"><a href="{{ route('admin-logout')}}"  class="text-decoration-none px-3 py-2 d-block"><i class="fal fa-bell"></i> Logout</a></li>
